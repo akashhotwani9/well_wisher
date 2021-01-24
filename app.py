@@ -22,6 +22,10 @@ def predictDiabetes(values, dic):
     values = np.asarray(values)
     return model.predict(values.reshape(1, -1))[0]
 
+@app.route("/", methods = ['POST', 'GET'])
+def welcome():
+	return "Welcome to Well Wishers API. you can use our APIs now."
+
 @app.route("/heart_disease_predict", methods = ['POST', 'GET'])
 def predictHeartDisease():
     try:
@@ -44,7 +48,7 @@ def predictHeartDisease():
     return jsonify(
         prediction=heart_prediction,
         symptoms_of_heart_disease=["Chest pain","Irregular heartbeat","Shortness of breath","Fainting"],
-        suggesstion="Always call 911 or emergency medical help if you think you might be having a heart attack. Heart disease is easier to treat when detected early, so talk to your doctor about your concerns regarding your heart health."
+        suggestion="Always call 911 or emergency medical help if you think you might be having a heart attack. Heart disease is easier to treat when detected early, so talk to your doctor about your concerns regarding your heart health."
         )
 
 @app.route("/kidney_disease_predict", methods = ['POST', 'GET'])
@@ -69,7 +73,7 @@ def predictKidneyDisease():
     return jsonify(
         prediction=kidney_prediction,
         symptoms_of_kidney_disease=["weight loss and poor appetite","tiredness","Shortness of breath","blood in your pee (urine)","an increased need to pee – particularly at night "],
-        suggesstion="The symptoms of kidney disease can be caused by many less serious conditions, so it's important to get a proper diagnosis. If you do have CKD, it's best to get it diagnosed as soon as possible. "
+        suggestion="The symptoms of kidney disease can be caused by many less serious conditions, so it's important to get a proper diagnosis. If you do have CKD, it's best to get it diagnosed as soon as possible. "
         )
 
 @app.route("/diabetes_predict", methods = ['POST', 'GET'])
@@ -94,7 +98,7 @@ def predictDiabetesDisease():
     return jsonify(
         prediction=diabetes_prediction,
         symptoms_of_diabetes=["Lose weight without trying","Are very hungry","Have blurry vision","Are very thirsty","Have blurry vision"],
-        suggesstion="If you're older than 45 or have other risks for diabetes, it's important to get tested. When you spot the condition early, you can avoid nerve damage, heart trouble, and other complications."
+        suggestion="If you're older than 45 or have other risks for diabetes, it's important to get tested. When you spot the condition early, you can avoid nerve damage, heart trouble, and other complications."
         )
 
 @app.route("/find_nearest_hospital", methods = [ 'GET'])
